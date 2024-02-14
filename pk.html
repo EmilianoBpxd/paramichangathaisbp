@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de San Valentín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffd4e5; /* Fondo rosa claro */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        h1 {
+            color: #ff69b4; /* Rosa fuerte */
+        }
+        #pregunta, #respuesta {
+            margin-top: 20px;
+        }
+        #botones-pregunta {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff69b4; /* Rosa brillante */
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff1493; /* Rosa intenso al pasar el ratón */
+        }
+        .animated {
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pregunta">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3FwOWFmOWVsY3ZveG1xZmNyc3lmM3hqMWxnMnEzdTkyMG81OWc3MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/42YlR8u9gV5Cw/giphy.gif" alt="GIF" class="animated" width="300">
+            <p>¿Quieres ser mi San Valentín?</p>
+            <div id="botones-pregunta">
+                <button onclick="respuesta('si')">¡Sí!</button>
+                <button onclick="preguntaSegunda()">No quiero</button>
+            </div>
+        </div>
+        <div id="respuesta"></div>
+    </div>
+
+    <script>
+        function respuesta(opcion) {
+            if (opcion === 'si') {
+                // Ingresa el enlace al GIF que deseas mostrar aquí
+                var gifURL = "https://media.giphy.com/media/c76IJLufpNwSULPk77/giphy.gif"; // ¡Ingresa el enlace del GIF aquí!
+                
+                // Crea un elemento de imagen
+                var gifElement = document.createElement("img");
+                gifElement.src = gifURL;
+                gifElement.alt = "GIF";
+                gifElement.classList.add("animated");
+                gifElement.width = 300;
+                
+                // Agrega el GIF al contenedor de respuesta
+                document.getElementById('respuesta').innerHTML = "";
+                document.getElementById('respuesta').appendChild(gifElement);
+                
+                // Muestra el mensaje de aceptación
+                document.getElementById('respuesta').innerHTML += "<p>¡Te amo de aqui a la luna en pasitos de tortuga<3 ¡Eres mi changuita hermosa! <3</p>";
+                
+                // Muestra la respuesta y oculta la pregunta
+                document.getElementById('respuesta').style.display = 'block';
+                document.getElementById('pregunta').style.display = 'none';
+            } else if (opcion === 'no') {
+                preguntaSegunda();
+            }
+        }
+
+        function preguntaSegunda() {
+            // Ingresa el enlace al GIF que deseas mostrar aquí
+            var gifURL = "https://media.giphy.com/media/WoF3yfYupTt8mHc7va/giphy.gif?cid=790b761122r2b3un9mo7jbs8rzcw5fqioebden6fz39iynwb&ep=v1_gifs_search&rid=giphy.gif&ct=g"; // ¡Ingresa el enlace del GIF aquí!
+            
+            document.getElementById('pregunta').style.display = 'none';
+            document.getElementById('respuesta').style.display = 'block';
+            // Mostrar el GIF seleccionado y la pregunta
+            document.getElementById('respuesta').innerHTML = "<img src='" + gifURL + "' alt='GIF' class='animated' width='300'>" +
+            "<p>¿Segura que no quieres ser mi San Valentín?</p>" +
+            "<div id='botones-pregunta'>" +
+            "<button onclick='respuesta(\"si\")'>Sí</button>" +
+            "<button onclick='preguntaTercera()'>Ya te he dicho que no quiero</button>" +
+            "</div>";
+        }
+
+        function preguntaTercera() {
+            var gifURL = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3RqMHd3YzlhdWRwMWV0bmgzajJnMDA3cmllMmU3bmhnZDdxc3cyZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/4V3RuU0zSq1SC8Hh4x/giphy.gif";
+            document.getElementById('pregunta').style.display = 'block';
+            document.getElementById('respuesta').style.display = 'none';
+            document.getElementById('pregunta').innerHTML = "<img src='" + gifURL + "' alt='GIF' class='animated' width='300'>" +
+            "<p>¿Por qué no quieres ser mi San Valentín?</p>" +
+            "<div id='botones-pregunta'>" +
+            "<button onclick='respuesta(\"si\")'>Es broma, sí quiero ser tu San Valentín</button>" +
+            "<button onclick='respuesta(\"no\")'>Porque no</button>" +
+            "</div>";
+        }
+
+        function preguntaCuarta() {
+            document.getElementById('respuesta').innerHTML = "<p>¡No te preocupes! No volveré a preguntarte.<br> Pero... ¿Quieres ser mi San Valentín?</p>" +
+            "<div id='botones-pregunta'>" +
+            "<button onclick='respuesta(\"si\")'>Sí</button>" +
+            "<button onclick='respuesta(\"no\")'>No</button>" +
+            "</div>";
+        }
+    </script>
+</body>
+</html>
